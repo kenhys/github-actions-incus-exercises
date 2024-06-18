@@ -15,7 +15,7 @@ jobs:
       - name: setup keyring
         run: sudo curl -fsSL https://pkgs.zabbly.com/key.asc -o /etc/apt/keyrings/zabbly.asc
       - name: setup incus stable
-        run: sudo curl -fsSL https://github.com/kenhys/github-actions-incus-exercises/main/focal-incus-stable.sources -o /etc/apt/sources.list.d/focal-incus-stable.sources
+        run: sudo curl -fsSL https://raw.githubusercontent.com/kenhys/github-actions-incus-exercises/main/focal-incus-stable.sources -o /etc/apt/sources.list.d/focal-incus-stable.sources
       - name: install incus
         run: |
           sudo apt -y update
@@ -37,7 +37,7 @@ jobs:
       - name: setup keyring
         run: sudo curl -fsSL https://pkgs.zabbly.com/key.asc -o /etc/apt/keyrings/zabbly.asc
       - name: setup incus stable
-        run: sudo curl -fsSL https://github.com/kenhys/github-actions-incus-exercises/main/focal-incus-stable.sources -o /etc/apt/sources.list.d/focal-incus-stable.sources
+        run: sudo curl -fsSL https://raw.githubusercontent.com/kenhys/github-actions-incus-exercises/main/focal-incus-stable.sources -o /etc/apt/sources.list.d/focal-incus-stable.sources
       - name: install incus
         run: |
           sudo apt -y update
