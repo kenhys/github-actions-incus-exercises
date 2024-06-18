@@ -21,6 +21,8 @@ jobs:
         run: |
           sudo apt -y update
           sudo apt-get install -y incus
+      - name: initialize incus
+        run: |
           sudo incus admin init --minimal
           sudo systemctl status incus
           sudo systemctl start incus
@@ -46,9 +48,11 @@ jobs:
         run: |
           sudo apt -y update
           sudo apt-get install -y incus
+      - name: initialize incus
+        run: |
           sudo incus admin init --minimal
           sudo systemctl status incus
-          sudo systemctl statt incus
+          sudo systemctl start incus
       - name: Available incus alias
         run: ./alias.sh
       - name: Available incus images
