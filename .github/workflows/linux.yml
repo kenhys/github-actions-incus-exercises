@@ -1,0 +1,53 @@
+name: Check available lxc images
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  launchv1:
+    name: Launch CGroupV1
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup keyring
+        run: sudo curl -fsSL https://pkgs.zabbly.com/key.asc -o /etc/apt/keyrings/zabbly.asc
+      - name: ${{ matrix.label }}
+        run: ./launch.sh ${{ matrix.image }}
+      - name: setup incus stable
+        run: sudo curl -fsSL https://github.com/kenhys/github-actions-incus-exercises/main/focal-incus-stable.sources -o /etc/apt/sources.list.d/focal-incus-stable.sources
+      - name: install incus
+        run: |
+          sudo apt -y update
+          sudo apt-get install -y incus
+          sudo systemctl status incus
+      - name: Available incus alias
+        run: ./alias.sh
+      - name: Available incus images
+        run: ./images.sh
+      - name: Available incus ubuntu images
+        run: ./ubuntu.sh
+  launchv2:
+    name: Launch CGroupV2
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup keyring
+        run: sudo curl -fsSL https://pkgs.zabbly.com/key.asc -o /etc/apt/keyrings/zabbly.asc
+      - name: setup incus stable
+        run: sudo curl -fsSL https://github.com/kenhys/github-actions-incus-exercises/main/focal-incus-stable.sources -o /etc/apt/sources.list.d/focal-incus-stable.sources
+      - name: install incus
+        run: |
+          sudo apt -y update
+          sudo apt-get install -y incus
+          sudo systemctl status incus
+      - name: Available incus alias
+        run: ./alias.sh
+      - name: Available incus images
+        run: ./images.sh
+      - name: Available incus ubuntu images
+        run: ./ubuntu.sh
