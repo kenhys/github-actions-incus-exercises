@@ -8,9 +8,9 @@ jobs:
   launchv1:
     name: Launch CGroupV1
     runs-on: ubuntu-20.04
+    continue-on-error: true
     strategy:
       fail-fast: false
-      continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - name: setup keyring
@@ -31,9 +31,9 @@ jobs:
   launchv2:
     name: Launch CGroupV2
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: false
-      continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - name: setup keyring
