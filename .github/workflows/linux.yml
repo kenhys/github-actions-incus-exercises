@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
+      continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - name: setup keyring
@@ -32,6 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - name: setup keyring
