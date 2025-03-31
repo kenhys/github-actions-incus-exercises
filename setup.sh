@@ -27,5 +27,5 @@ sudo systemctl status incus
 echo "::endgroup::"
 
 echo "::group::start incus"
-sudo systemctl start incus
+sudo systemctl restart incus
 echo "::endgroup::"
