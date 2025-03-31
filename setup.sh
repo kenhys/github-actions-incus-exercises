@@ -12,8 +12,14 @@ sudo apt -y update
 sudo apt-get install -y incus
 echo "::endgroup::"
 
+# See https://github.com/groonga/groonga/blob/main/.github/workflows/setup.yml
+# https://linuxcontainers.org/incus/docs/main/howto/network_bridge_firewalld/#prevent-connectivity-issues-with-incus-and-docker
+echo Allow egress network traffic flows for Incus
+sudo iptables -I DOCKER-USER -i incusbr0 -j ACCEPT
+sudo iptables -I DOCKER-USER -o incusbr0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
 echo "::group::initialize incus"
-sudo incus admin init --minimal
+sudo incus admin init --auto
 echo "::endgroup::"
 
 echo "::group::check incus service status"
