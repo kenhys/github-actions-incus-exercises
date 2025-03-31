@@ -4,6 +4,7 @@ on:
     branches:
       - main
   pull_request:
+  dispatch_workflow:
 jobs:
   setupv1:
     name: Setup CGroupV1
