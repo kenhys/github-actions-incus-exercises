@@ -26,7 +26,7 @@ jobs:
         run: ./ubuntu.sh
   setupv2:
     name: Setup CGroupV2
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     continue-on-error: true
     strategy:
       fail-fast: false
@@ -35,7 +35,7 @@ jobs:
       - name: check old image server
         run: lxc remote list
       - name: setup incus
-        run: ./setup.sh jammy
+        run: ./setup.sh noble
       - name: Available incus alias
         run: ./alias.sh
       - name: Available incus images
