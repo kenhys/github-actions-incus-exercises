@@ -32,8 +32,6 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
-      - name: check old image server
-        run: lxc remote list
       - name: setup incus
         run: ./setup.sh noble
       - name: Available incus alias
