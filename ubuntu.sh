@@ -21,7 +21,11 @@ sudo incus image info noble
 echo "::endgroup::"
 
 echo "::group::Run test: show info ubuntu:noble"
-sudo incus image list ubuntu:noble
+sudo incus image info ubuntu:noble
+echo "::endgroup::"
+
+echo "::group::Run test: show info images:ubuntu/noble"
+sudo incus image info images:ubuntu/noble
 echo "::endgroup::"
 
 echo "::group::Run test: list ubuntu images"
