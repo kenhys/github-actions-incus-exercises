@@ -18,6 +18,8 @@ jobs:
         run: lxc remote list
       - name: setup incus
         run: ./setup.sh focal
+      - name: show remote
+        run: sudo incus remote list
       - name: Available incus alias
         run: ./alias.sh
       - name: Available incus images
@@ -34,6 +36,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: setup incus
         run: ./setup.sh noble
+      - name: show remote
+        run: sudo incus remote list
       - name: Available incus alias
         run: ./alias.sh
       - name: Available incus images
