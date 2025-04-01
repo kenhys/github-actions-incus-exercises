@@ -28,6 +28,10 @@ echo "::group::Run test: show info images:ubuntu/noble"
 sudo incus image info images:ubuntu/noble
 echo "::endgroup::"
 
+echo "::group::Run test: show info images:ubuntu/24.04"
+sudo incus image info images:ubuntu/24.04
+echo "::endgroup::"
+
 echo "::group::Run test: list ubuntu images"
 sudo incus image list ubuntu:
 echo "::endgroup::"
