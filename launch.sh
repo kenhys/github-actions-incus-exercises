@@ -5,7 +5,7 @@ set -eux
 image=$1
 
 echo "::group::Run test: collect information"
-sudo incus image info $image
+sudo incus image info images:$image
 echo "::endgroup::"
 
 echo "::group::Run test: launch $image"
