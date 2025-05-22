@@ -2,7 +2,7 @@
   "include": [
     {
       "label": "AlmaLinux 9 x86_64",
-      "test-container-image": "almalinux:9",
+      "test-container-image": "almalinux:9"
     },
     {
       "label": "Amazon Linux 2 x86_64",
