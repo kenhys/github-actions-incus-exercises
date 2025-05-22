@@ -18,7 +18,7 @@ jobs:
         working-directory: .github/workflows/
   v1test:
     needs: define-matrix
-    name: Test v1 image on ubuntu-24.04
+    name: ${{ matrix.test-container-image }} on ubuntu-24.04
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false

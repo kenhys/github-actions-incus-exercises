@@ -1,16 +1,16 @@
 {
   "include": [
     {
-      "label": "AlmaLinux 9 x86_64",
-      "test-container-image": "almalinux:9"
+        "label": "AlmaLinux 9 x86_64",
+        "test-container-image": "images:almalinux/9"
     },
     {
-      "label": "Amazon Linux 2 x86_64",
-      "test-container-image": "amazonlinux/2"
+        "label": "Amazon Linux 2 x86_64",
+        "test-container-image": "images:amazonlinux/2"
     },
     {
-      "label": "Amazon Linux 2023 x86_64",
-      "test-container-image": "amazonlinux/2023"
+        "label": "Amazon Linux 2023 x86_64",
+        "test-container-image": "images:amazonlinux/2023"
     }
   ]
 }
