@@ -13,9 +13,9 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
       steps:
         - uses: actions/checkout@v4
-          - id: set-matrix
-            run: echo "matrix=$(cat incus.matrix.json | jq --compact-output)" >> $GITHUB_OUTPUT
-            working-directory: .github/workflows/
+        - id: set-matrix
+          run: echo "matrix=$(cat incus.matrix.json | jq --compact-output)" >> $GITHUB_OUTPUT
+          working-directory: .github/workflows/
   v1test:
     needs: define-matrix
     name: Test v1 image on ubuntu-24.04
