@@ -6,11 +6,11 @@
     },
     {
       "label": "Amazon Linux 2 x86_64",
-      "test-container-image": "amazonlinux:2"
+      "test-container-image": "amazonlinux/2"
     },
     {
       "label": "Amazon Linux 2023 x86_64",
-      "test-container-image": "amazonlinux:2023"
+      "test-container-image": "amazonlinux/2023"
     }
   ]
 }

@@ -43,6 +43,6 @@ jobs:
       - name: Check images
         run: |
           ./images.sh
-      - name: Check images
+      - name: Launch ${{ matrix.test-container-image }}
         run: |
           ./launch.sh ${{ matrix.test-container-image }}
