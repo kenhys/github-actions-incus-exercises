@@ -44,10 +44,10 @@ jobs:
       - name: Launch ${{ matrix.test-container-image }}
         if: ${{ matrix.test-container-image }} = images:amazonlinux/2
         run: |
-          sudo incant list
-          sudo incant up amazonlinux2
+          sudo /opt/pipx_bin/incant list
+          sudo /opt/pipx_bin/incant up amazonlinux2
       - name: Launch ${{ matrix.test-container-image }} KVM
         if: ${{ matrix.test-container-image }} = images:amazonlinux/2
         run: |
-          sudo incant list
-          sudo incant up amazonlinux2kvm
+          sudo /opt/pipx_bin/incant list
+          sudo /opt/pipx_bin/incant up amazonlinux2kvm
