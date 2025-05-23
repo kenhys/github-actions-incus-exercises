@@ -40,7 +40,7 @@ jobs:
       - name: Install incant
         run: |
           sudo apt-get install -y pipx
-          pipx install git+https://github.com/lnussbaum/incant.git
+          sudo pipx install git+https://github.com/lnussbaum/incant.git
       - name: Launch ${{ matrix.test-container-image }}
         if: ${{ matrix.test-container-image }} = images:amazonlinux/2
         run: |
