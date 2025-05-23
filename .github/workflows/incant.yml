@@ -42,11 +42,12 @@ jobs:
           sudo apt-get install -y pipx
           pipx install git+https://github.com/lnussbaum/incant.git
       - name: Launch ${{ matrix.test-container-image }}
-        run: |
-          incant list
-          incant up --verbose amazonlinux2
-      - name: Launch ${{ matrix.test-container-image }}
         if: ${{ matrix.test-container-image }} = images:amazonlinux/2
         run: |
           incant list
-          incant up --verbose amazonlinux2kvm
+          incant up amazonlinux2
+      - name: Launch ${{ matrix.test-container-image }} KVM
+        if: ${{ matrix.test-container-image }} = images:amazonlinux/2
+        run: |
+          incant list
+          incant up amazonlinux2kvm
