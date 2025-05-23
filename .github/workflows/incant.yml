@@ -43,4 +43,5 @@ jobs:
           pipx install git+https://github.com/lnussbaum/incant.git
       - name: Launch ${{ matrix.test-container-image }}
         run: |
-          incant up
+          incant list
+          incant up --verbose amazonlinux2
