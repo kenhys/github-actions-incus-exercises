@@ -41,11 +41,12 @@ jobs:
         run: |
           sudo apt-get install -y pipx
           sudo pipx install git+https://github.com/lnussbaum/incant.git
-      - name: Launch ${{ matrix.test-container-image }}
-        if: ${{ matrix.test-container-image }} = images:amazonlinux/2
-        run: |
-          sudo /opt/pipx_bin/incant list
-          sudo /opt/pipx_bin/incant up amazonlinux2
+# The image used by this instance requires a CGroupV1 host system
+      # - name: Launch ${{ matrix.test-container-image }}
+      #   if: ${{ matrix.test-container-image }} = images:amazonlinux/2
+      #   run: |
+      #     sudo /opt/pipx_bin/incant list
+      #     sudo /opt/pipx_bin/incant up amazonlinux2
       - name: Launch ${{ matrix.test-container-image }} KVM
         if: ${{ matrix.test-container-image }} = images:amazonlinux/2
         run: |
