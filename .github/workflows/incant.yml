@@ -45,3 +45,8 @@ jobs:
         run: |
           incant list
           incant up --verbose amazonlinux2
+      - name: Launch ${{ matrix.test-container-image }}
+        if: ${{ matrix.test-container-image }} = images:amazonlinux/2
+        run: |
+          incant list
+          incant up --verbose amazonlinux2kvm
