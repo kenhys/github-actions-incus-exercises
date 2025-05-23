@@ -1,0 +1,20 @@
+instances:
+  debian12:
+    image: images:debian/12
+    vm: false
+    provision:
+      - echo "Hello, World!"
+      - apt-get update && apt-get install -y curl
+  amazonlinux2:
+    image: images:amazonlinux/2
+    vm: false
+    provision:
+      - echo "Hello, World!"
+      - yum update
+  amazonlinux2kvm:
+    image: images:amazonlinux/2
+    vm: true
+    provision:
+      - echo "Hello, World!"
+      - yum update
+
