@@ -18,8 +18,12 @@ echo "::group::Run test: show info images:amazonlinux/2023"
 sudo incus image info images:amazonlinux/2023
 echo "::endgroup::"
 
-echo "::group::Run test: show info fluent images"
+echo "::group::Run test: show info fluent: images"
 sudo incus image list fluent:
+echo "::endgroup::"
+
+echo "::group::Run test: show info fluent:ubuntu/focal image"
+sudo incus image info fluent:ubuntu/focal
 echo "::endgroup::"
 
 echo -e "\nAll check has passed!\n"
