@@ -37,6 +37,7 @@ jobs:
       - name: Setup Incus
         run: |
           sudo incus admin init --auto
+          sudo incus remote add local https://fluentd.cdn.cncf.io/test/incus-images --protocol=simplestreams
       - name: Check alias
         run: |
           ./alias.sh
