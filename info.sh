@@ -7,6 +7,7 @@ if [ -x /usr/bin/dnf ]; then
     dnf update -y
     rpm -qa | grep openssl
     cat /etc/yum.repos.d/*.repo
+    cat /etc/dnf/vars/releasever
 elif [ -x /usr/bin/apt ]; then
     apt show libssl3t64
 else
