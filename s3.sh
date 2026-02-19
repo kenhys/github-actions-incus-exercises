@@ -14,6 +14,7 @@ case $ARCH in
     *)
         ;;
 esac
+sudo yum install unzip
 unzip awscliv2.zip
 sudo ./aws/install
 
