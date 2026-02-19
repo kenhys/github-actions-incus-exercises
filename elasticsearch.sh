@@ -8,6 +8,8 @@ GATEWAY=$(ip route | grep default | cut -d' ' -f3)
 curl --location --output fluent-package.rpm https://fluentd.cdn.cncf.io/test/fluent-package-6.0.2-1.el10.x86_64.rpm
 sudo yum install -y ./fluent-package.rpm
 
+sudo yum install -y jq
+
 (! systemctl status --no-pager fluentd)
 
 # Overwrite with s3.conf
