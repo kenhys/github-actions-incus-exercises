@@ -18,7 +18,7 @@ sudo yum install -y unzip
 unzip awscliv2.zip
 sudo ./aws/install
 
-ip route
+GATEWAY=$(ip route | grep default | cut -d' ' -f3)
 
 # install latest fluent-package
 curl --location --output fluent-package.rpm https://fluentd.cdn.cncf.io/test/fluent-package-6.0.2-1.el10.x86_64.rpm
@@ -27,10 +27,12 @@ sudo yum install -y ./fluent-package.rpm
 (! systemctl status --no-pager fluentd)
 
 # Overwrite with s3.conf
+sed -i -e "s/10.0.2.2/${GATEWAY}/" s3.conf
 sudo cp /host/s3.conf /etc/fluent/fluentd.conf
+cat /etc/fluent/fluentd.conf
 
 # Check container => host localstack connectivity
-curl http://10.0.2.2:4566/_localstack/health
+curl http://${GATEWAY}:4566/_localstack/health
 
 sudo systemctl enable --now fluentd
 systemctl status --no-pager fluentd
