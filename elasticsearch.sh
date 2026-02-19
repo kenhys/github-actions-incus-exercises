@@ -15,13 +15,13 @@ sed -e "s/localhost/${GATEWAY}/" /host/elasticsearch.conf > /tmp/elasticsearch.c
 sudo cp /tmp/elasticsearch.conf /etc/fluent/fluentd.conf
 cat /etc/fluent/fluentd.conf
 
-curl "http://${GATEWAY}:9200/_cat/indices?v"
+curl --silent "http://${GATEWAY}:9200/_cat/indices?v"
 
 sudo systemctl enable --now fluentd
 systemctl status --no-pager fluentd
 
 # wait loading sample data
-sleep 15
+sleep 20
 
 count=$(curl "http://${GATEWAY}:9200/_cat/indices?v" | grep -c fluentd-test)
 test $count -eq 1
