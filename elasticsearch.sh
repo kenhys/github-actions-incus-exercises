@@ -11,7 +11,7 @@ sudo yum install -y ./fluent-package.rpm
 (! systemctl status --no-pager fluentd)
 
 # Overwrite with s3.conf
-sed -e "s/10.0.2.2/${GATEWAY}/" /host/elasticsearch.conf > /tmp/elasticsearch.conf
+sed -e "s/localhost/${GATEWAY}/" /host/elasticsearch.conf > /tmp/elasticsearch.conf
 sudo cp /tmp/elasticsearch.conf /etc/fluent/fluentd.conf
 cat /etc/fluent/fluentd.conf
 
