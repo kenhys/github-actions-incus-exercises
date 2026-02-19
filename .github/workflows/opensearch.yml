@@ -36,6 +36,7 @@ jobs:
           docker run -d -p 9200:9200 -p 9600:9600 -e "discovery.type=single-node" -e OPENSEARCH_INITIAL_ADMIN_PASSWORD=Passvv0rd@ opensearchproject/opensearch:2
       - name: Ensure Opensearch availability from host
         run: |
+          sleep 10
           until curl --silent --insecure --user "admin:Passvv0rd@" https://localhost:9200/_cluster/health | jq --raw-output .status | grep -E "(yellow|green)"; do
             sleep 5
           done
