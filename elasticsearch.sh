@@ -21,9 +21,8 @@ sudo systemctl enable --now fluentd
 systemctl status --no-pager fluentd
 
 # wait loading sample data
-sleep 20
-
-count=$(curl "http://${GATEWAY}:9200/_cat/indices?v" | grep -c fluentd-test)
-test $count -eq 1
+until curl --silent "http://${GATEWAY}:9200/_cat/indices?v" | grep -c 'fluentd-test'; do
+    sleep 5
+done
 
 curl "http://${GATEWAY}:9200/_search?q=message:hello&pretty"
