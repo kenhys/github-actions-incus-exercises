@@ -34,9 +34,9 @@ jobs:
       - name: Setup Opensearch on host
         run: |
           docker run -d -p 9200:9200 -p 9600:9600 -e "discovery.type=single-node" -e OPENSEARCH_INITIAL_ADMIN_PASSWORD=Passvv0rd@ opensearchproject/opensearch:2
-      - name: Connect localstack from host
+      - name: Ensure Opensearch availability from host
         run: |
-          until curl --silent --insecure --user "admin:Passvv0rd@" https://localhost:9200/_cluster/health | grep -E '"status":"(yellow|green)"'; do
+          until curl --silent --insecure --user "admin:Passvv0rd@" https://localhost:9200/_cluster/health | jq .status | grep -E "(yellow|green)"; do
             sleep 5
           done
           curl --silent --insecure --user "https://localhost:9200/_cat/indices?v"
