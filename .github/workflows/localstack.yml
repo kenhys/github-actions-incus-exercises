@@ -8,7 +8,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   s3test:
-    name: Test ${{ matrix.label }} ${{ matrix.test }}
+    name: ${{ matrix.label }} ${{ matrix.test }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
