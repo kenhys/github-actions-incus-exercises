@@ -27,8 +27,8 @@ sudo yum install -y ./fluent-package.rpm
 (! systemctl status --no-pager fluentd)
 
 # Overwrite with s3.conf
-sudo sed -i -e "s/10.0.2.2/${GATEWAY}/" /host/s3.conf
-sudo cp /host/s3.conf /etc/fluent/fluentd.conf
+sed -e "s/10.0.2.2/${GATEWAY}/" /host/s3.conf > /tmp/s3.conf
+sudo cp /tmp/s3.conf /etc/fluent/fluentd.conf
 cat /etc/fluent/fluentd.conf
 
 # Check container => host localstack connectivity
