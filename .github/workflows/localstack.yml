@@ -14,10 +14,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        label: "AlmaLinux 10 x86_64"
-        test-incus-image: "images:almalinux/10"
-        test:
-          - "s3.sh"
+        include:
+          - label: "AlmaLinux 10 x86_64"
+            test-incus-image: "images:almalinux/10"
+            test: "s3.sh"
     steps:
       - uses: actions/checkout@v4
       - name: Install Incus
