@@ -36,7 +36,7 @@ jobs:
           docker run -d -p 9200:9200 -e "discovery.type=single-node" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:8.19.11
       - name: Connect elasticsearch from host
         run: |
-          until curl -s http://localhost:9200/_cluster/health | jq .status | grep -E "(yellow|green)"; do
+          until curl --silent http://localhost:9200/_cluster/health | jq --raw-output ".status // empty" | grep -E "yellow|green"; do
             sleep 5
           done
           curl --silent --insecure --user "admin:Passvv0rd@" "https://localhost:9200/_cat/indices?v"
