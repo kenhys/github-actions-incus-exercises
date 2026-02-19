@@ -1,0 +1,41 @@
+name: Check Opensearch
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.head_ref || github.sha }}-${{ github.workflow }}
+  cancel-in-progress: true
+jobs:
+  s3test:
+    name: ${{ matrix.label }} ${{ matrix.test }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: "AlmaLinux 10 x86_64"
+            test-incus-image: "images:almalinux/10"
+            test: "s3.sh"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Incus
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y -V incus
+      - name: Allow egress network traffic flows for Incus
+        # https://linuxcontainers.org/incus/docs/main/howto/network_bridge_firewalld/#prevent-connectivity-issues-with-incus-and-docker
+        run: |
+          sudo iptables -I DOCKER-USER -i incusbr0 -j ACCEPT
+          sudo iptables -I DOCKER-USER -o incusbr0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+      - name: Setup Incus
+        run: |
+          sudo incus admin init --auto
+      - name: Setup localstack on host
+        run: |
+          docker run -d --name localstack -p 4566:4566 -e AWS_ACCESS_KEY_ID=localstack-test -e AWS_SECRET_ACCESS_KEY=localstack-test -e AWS_DEFAULT_REGION=ap-northeast-1 localstack/localstack
+      - name: Connect localstack from host
+        run: |
+          sleep 10 && curl http://127.0.0.1:4566/_localstack/health
+      - name: Run Test ${{matrix.test}} on ${{ matrix.test-incus-image }}
+        run: ./test.sh ${{ matrix.test-incus-image }} ${{ matrix.test }}
