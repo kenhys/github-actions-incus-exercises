@@ -27,7 +27,7 @@ sudo yum install -y ./fluent-package.rpm
 (! systemctl status --no-pager fluentd)
 
 # Overwrite with s3.conf
-sed -i -e "s/10.0.2.2/${GATEWAY}/" s3.conf
+sed -i -e "s/10.0.2.2/${GATEWAY}/" /host/s3.conf
 sudo cp /host/s3.conf /etc/fluent/fluentd.conf
 cat /etc/fluent/fluentd.conf
 
