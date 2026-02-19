@@ -35,4 +35,4 @@ jobs:
         run: |
           docker run -d --name localstack -p 4566:4566 -e AWS_ACCESS_KEY_ID=localstack-test -e AWS_SECRET_ACCESS_KEY=localstack-test -e AWS_DEFAULT_REGION=ap-northeast-1 localstack/localstack 
       - name: Run Test ${{matrix.test}} on ${{ matrix.test-incus-image }}
-        run: fluent-package/yum/systemd-test/test.sh ${{ matrix.test-incus-image }} ${{ matrix.test }}
+        run: ./test.sh ${{ matrix.test-incus-image }} ${{ matrix.test }}
