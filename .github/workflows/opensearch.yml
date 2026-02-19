@@ -38,10 +38,10 @@ jobs:
         run: |
           sleep 10
           until curl --silent --insecure --user "admin:Passvv0rd@" \
-                https://localhost:9200/_cluster/health | jq --raw-output ".status // empty" | grep -E "yellow|green"
+                "https://localhost:9200/_cluster/health" | jq --raw-output ".status // empty" | grep -E "yellow|green"
           do
             sleep 5
           done
-          curl --silent --insecure --user "https://localhost:9200/_cat/indices?v"
+          curl --silent --insecure --user "admin:Passvv0rd@" "https://localhost:9200/_cat/indices?v"
       - name: Run Test ${{matrix.test}} on ${{ matrix.test-incus-image }}
         run: ./test.sh ${{ matrix.test-incus-image }} ${{ matrix.test }}
