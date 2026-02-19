@@ -9,7 +9,6 @@ concurrency:
 jobs:
   s3test:
     name: Test ${{ matrix.label }} ${{ matrix.test }}
-    needs: [define-matrix, v2test]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
