@@ -19,8 +19,8 @@ unzip awscliv2.zip
 sudo ./aws/install
 
 # install latest fluent-package
-curl -L https://fluentd.cdn.cncf.io/test/fluent-package-6.0.2-1.el10.x86_64.rpm
-sudo rpm -ivh ./fluent-package-6.0.2-1.el10.x86_64.rpm
+curl --location --output fluent-package.rpm https://fluentd.cdn.cncf.io/test/fluent-package-6.0.2-1.el10.x86_64.rpm
+sudo rpm -ivh ./fluent-package.rpm
 
 (! systemctl status --no-pager fluentd)
 
