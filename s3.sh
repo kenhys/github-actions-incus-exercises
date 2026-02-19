@@ -40,4 +40,4 @@ systemctl status --no-pager fluentd
 # wait loading sample data
 sleep 15
 
-AWS_ACCESS_KEY_ID=localstack-test AWS_SECRET_ACCESS_KEY=localstack-test aws --endpoint-url=http://10.0.2.2:4566 s3 ls localstack-bucket
+AWS_ACCESS_KEY_ID=localstack-test AWS_SECRET_ACCESS_KEY=localstack-test aws --endpoint-url=http://${GATEWAY}:4566 s3 ls localstack-bucket
