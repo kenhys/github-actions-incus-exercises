@@ -22,7 +22,8 @@ systemctl status --no-pager fluentd
 
 # wait loading sample data
 until curl --silent "http://${GATEWAY}:9200/_cat/indices?v" | grep -c 'fluentd-test'; do
-    sleep 5
+    sleep 10
 done
 
-curl "http://${GATEWAY}:9200/_search?q=message:hello&pretty"
+count=$(curl --silent "http://${GATEWAY}:9200/_search?q=message:hello&pretty" | jq ".hits.hits | length")
+test $count -gt 0
