@@ -18,6 +18,8 @@ sudo yum install -y unzip
 unzip awscliv2.zip
 sudo ./aws/install
 
+ip route
+
 # install latest fluent-package
 curl --location --output fluent-package.rpm https://fluentd.cdn.cncf.io/test/fluent-package-6.0.2-1.el10.x86_64.rpm
 sudo yum install -y ./fluent-package.rpm
