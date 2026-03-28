@@ -9,7 +9,12 @@ sudo incus image info $image
 echo "::endgroup::"
 
 echo "::group::Run test: launch $image"
-sudo incus launch $image target
+sudo incus launch $image target || {
+  echo "--- LOG START ---"
+  sudo incus info --show-log target
+  echo "--- LOG END ---"
+  exit 1
+}
 sleep 5
 echo "::endgroup::"
 
