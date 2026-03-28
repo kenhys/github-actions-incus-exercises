@@ -10,7 +10,7 @@ if [ -x /usr/bin/dnf ]; then
     cat /etc/dnf/vars/releasever
     dnf repolist -v
 elif [ -x /usr/bin/apt ]; then
-    apt show libssl3t64
+    dpkg -l | grep libssl
 else
     :
 fi
